@@ -69,6 +69,7 @@ withdll.exe /d:..\release\dll_detours_hook.dll C:\Path\App\app_demo.exe
 Performs **static DLL injection by modifying the executable’s Import Address Table (IAT)**.  
 After injection, the DLL will be loaded automatically when the application is started manually.
 
+#### Manual Method:
 1. Navigate to the target application's directory:
 ```cmd
 cd C:\Path\App
@@ -78,6 +79,23 @@ cd C:\Path\App
 ```cmd
 "D:\workspace\code\c\dll_detours_hook\tools\setdll.exe" /d:dll_detours_hook.dll app_demo.exe
 ```
+
+#### Automated Method (Recommended):
+Use the provided injection script for a user-friendly process:
+
+```cmd
+script\inject.bat "C:\Path\To\app_demo.exe"
+```
+
+Or specify a custom DLL path:
+
+```cmd
+script\inject.bat "C:\Path\To\app_demo.exe" "D:\path\to\dll_detours_hook.dll"
+```
+
+The script will:
+1. Copy the DLL to the target application's directory
+2. Execute `setdll.exe` to perform the injection
 
 ⚠️ **WARNING**  
 This method **permanently modifies the executable file on disk**.  
